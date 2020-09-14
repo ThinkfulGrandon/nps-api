@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>National Parks API</title>
 </head>
 <body>
@@ -10,8 +11,21 @@
         <h1>NPS API</h1>
     </header>
     <main>
-        <label for="park-search">Look up national park by name: </label>
-        <input type="text" id="park-search jsParkSearch" name="park-search" required>
+        <form class="form">
+            <label for="state-search">Look up national parks by one, or multiple states 
+                (Please us state abbreviations and separate each state with a space.): </label>
+            <input type="text" id="jsStateSearch" name="State-search" required>
+    
+            <label for="choose-amount">Max number of results: </label>
+            <input type="text" class="max-results" id="jsMaxResults" value="10">
+            <button id="submit-button" type="submit">submit</button>
+        </form>
+        <div class="results">
+
+        </div>
+        
     </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

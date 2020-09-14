@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+    /* outline: red 2px dashed; */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 2rem;
+}
+
+form {
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+main {
+    margin: 2rem;
+}
+
+input, label, button {
+    display: block;
+}
+
+input, select, label {
+    margin-bottom: 1rem;
+}
