@@ -1,13 +1,15 @@
+"use strict";
+
 const apiKey = "lBL0PD3dU0BOi2fbb5rVb7nLRnaEgaFwX8joypzw";
 const url = "https://developer.nps.gov/api/v1/parks?";
 
 
 function showResults(responseJson, length) {
-    for (i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         $('.results').append(`
         <h3>${responseJson.data[i].fullName}</h3>
         <p>${responseJson.data[i].description}</p>
-        <p><a href="${responseJson.data[i].url}">${responseJson.data[i].url}</a></p>
+        <p><a href="${responseJson.data[i].url}" target="_blank">${responseJson.data[i].url}</a></p>
         <p>Address: ${responseJson.data[i].addresses[0].line1} ${responseJson.data[i].addresses[0].city}, ${responseJson.data[i].addresses[0].stateCode}</p>
         <hr>
         `)
@@ -22,14 +24,14 @@ function decideLimit(responseJson) {
     let y = parseInt(responseJson.limit, 10);
     // console.log(typeof x);
     // console.log(x);
-    let length = 0;
+    
     if (x > y) {
         console.log('first');
-        length = y;
+        let length = y;
         showResults(responseJson, length);
     } else if ( x < y) {
         console.log('second');
-        length = x;
+        let length = x;
         showResults(responseJson, length);
     }
 }
