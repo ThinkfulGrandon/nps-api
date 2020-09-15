@@ -7,7 +7,7 @@ function showResults(responseJson, length) {
         $('.results').append(`
         <h3>${responseJson.data[i].fullName}</h3>
         <p>${responseJson.data[i].description}</p>
-        <p><a href="${responseJson.data[i].url}">Website</a></p>
+        <p><a href="${responseJson.data[i].url}">${responseJson.data[i].url}</a></p>
         <p>Address: ${responseJson.data[i].addresses[0].line1} ${responseJson.data[i].addresses[0].city}, ${responseJson.data[i].addresses[0].stateCode}</p>
         <hr>
         `)
