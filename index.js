@@ -4,8 +4,7 @@ const url = "https://developer.nps.gov/api/v1/parks?";
 
 function showResults(responseJson) {
     console.log(responseJson);
-    for (i = 0;i < responseJson.total; i++) {
-        console.log(i);
+    for (i = 0; i < responseJson.limit || i < responseJson.total; i++) {
         $('.results').append(`
         
         <h3>${responseJson.data[i].fullName}</h3>
@@ -13,7 +12,7 @@ function showResults(responseJson) {
         <p><a href="${responseJson.data[i].url}">Website</a></p>
         <hr>
         `)
-    }
+    } return
 }
 
 function makeRequest(searchQuery) {
@@ -32,6 +31,7 @@ function formatSearch(state, max) {
     let queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     queryItems = queryItems.join('&');
+    queryItems = queryItems.replaceAll("%2C", ",")
     console.log(queryItems);
     let searchQuery = url + queryItems;
     console.log(searchQuery);
@@ -39,11 +39,13 @@ function formatSearch(state, max) {
 }
 
 function formatParams() {
-        let state = []
-        let stateparam =$('#jsStateSearch').val();
-        stateparam = stateparam.toUpperCase().replaceAll(" ", ",");
-        state.push(stateparam);
-        console.log(state)
+        let state = $('#jsStateSearch').val();
+        state = state.toUpperCase().replaceAll(" ", ",")
+        // let state = []
+        // let stateparam = $('#jsStateSearch').val();
+        // stateparam = stateparam.toUpperCase().replaceAll(" ", ",");
+        // state.push(stateparam);
+        console.log("---------" + state)
         let max = $('#jsMaxResults').val();
         max = String(max);
         formatSearch(state, max);  
@@ -64,7 +66,3 @@ function runApp() {
 
 $(runApp())
 
-
-
-// https://developer.nps.gov/api/v1/parks?stateCode=CA,CT&api_key=lBL0PD3dU0BOi2fbb5rVb7nLRnaEgaFwX8joypzw
-// https://developer.nps.gov/api/v1/parks?stateCode=CA,CT&api_key=lBL0PD3dU0BOi2fbb5rVb7nLRnaEgaFwX8joypzw
